@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ideia" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41643190-9bbe-4b1b-97f2-984bb05cbc33">
+	<property name="ireport.zoom" value="1.1000000000000052"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_fim" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ideia_problema.`tx_assunto` AS assunto,
+     ideia_problema.`dt_criacao` AS data,
+     ideia_problema.`tx_descricao` AS descricao,
+     ideia_problema.`tx_email` AS email,
+     ideia_problema.`tx_nome` AS nome,
+     ideia_problema.`tx_sugestao` AS sugestao,
+     ideia_problema.`tx_telefone` AS telefone,
+     ideia_problema.`cs_tipo` AS tipo
+FROM
+     `ideia_problema` ideia_problema
+WHERE
+     ideia_problema.`dt_criacao` BETWEEN $P{data_inicio} and $P{data_fim}
+ORDER BY
+     ideia_problema.`dt_criacao` DESC]]>
+	</queryString>
+	<field name="assunto" class="java.lang.String"/>
+	<field name="data" class="java.sql.Timestamp"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="sugestao" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="280" y="0" width="233" height="19" uuid="b0547678-57e7-41fe-9d4e-d3c3302b15d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Ideias]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="155" y="1" width="324" height="20" uuid="20ae811c-05e9-41e6-bf57-406e0d8483ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[descricao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="1" width="323" height="20" uuid="cbaad5f9-6a4e-417d-98ce-f038e79659d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[sugestao]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="19" width="801" height="1" uuid="72b197f3-2427-4ad4-8413-9d2450bde853"/>
+			</line>
+			<staticText>
+				<reportElement x="55" y="1" width="100" height="20" uuid="558f5896-ee27-4a81-9efb-7896468597b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[assunto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="1" width="53" height="20" uuid="e5cf0e26-e734-4d70-9bed-d40d5b5e0ca2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[tipo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="145" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="155" y="0" width="324" height="144" uuid="616636ea-4484-427d-aa6d-5932a731f364"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="479" y="0" width="323" height="144" uuid="936c7899-5da7-4260-87e6-51fc2bf04d44"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sugestao}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="144" width="802" height="1" uuid="02568aba-765f-4f13-aea8-ac3be02b7d40"/>
+			</line>
+			<line>
+				<reportElement x="478" y="1" width="1" height="143" uuid="7ddf50d3-dabd-45df-8e09-9f4de30e73cb"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement x="55" y="1" width="100" height="143" uuid="9fe1f15f-bee6-47b5-9dde-87c46f8ee9fe"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font size="8" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assunto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="54" height="144" uuid="e704c83b-8f9d-4009-a846-1102dc3c578f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="54" y="-2" width="1" height="146" uuid="7a22820b-1939-4572-961e-304ce9a8bed9"/>
+			</line>
+			<line>
+				<reportElement x="154" y="1" width="1" height="143" uuid="208755ab-bc08-47bc-915b-a7a74bfa2c8c"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

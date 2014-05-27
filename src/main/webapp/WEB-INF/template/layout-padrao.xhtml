@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Sistema de ideias</ui:insert></title>
+
+	<h:outputStylesheet library="css" name="sistema.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="images" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+
+	<div style="float: left">
+		<h:graphicImage library="images" name="logo-rm.jpg" />
+	</div>
+
+	</header>
+
+	<div id="header">
+		<ui:insert name="header" />
+	</div>
+
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+
+	<p:separator style="margin-top: 20px" />
+
+	<footer>Cmt 12ª RM <a
+		href="http://iranduba.12rm.eb.mil.br:8081/ideiudo/pages/ideia-problema/pesquisa-ideia-problema.xhtml"
+		target="blank">Desenvolvido pela Sub seção de desenvolvimento de
+		sistemas</a> </footer>
+
+</h:body>
+
+</html>
